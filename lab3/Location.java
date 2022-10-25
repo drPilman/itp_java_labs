@@ -1,5 +1,3 @@
-import java.util.Objects;
-
 /**
  * This class represents a specific location in a 2D map. Coordinates are
  * integer values.
@@ -16,7 +14,7 @@ public class Location {
 	public Location(int x, int y) {
 		xCoord = x;
 		yCoord = y;
-		hashCode = x*1000+y;
+		hashCode = x*40+y;
 	}
 
 	/** Creates a new location with coordinates (0, 0). **/

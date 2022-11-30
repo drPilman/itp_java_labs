@@ -24,6 +24,7 @@ public class Location {
 
 	@Override
 	public int hashCode() {
+		Object e = new Object();
 		return hashCode;
 	}
 

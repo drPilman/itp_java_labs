@@ -37,15 +37,15 @@ public class Task1 {
 	 * @param height of triangle
 	 * @return trianle's area
 	 */
-	public int triArea(int base, int height) {
-		return base * height / 2;
+	public double triArea(int base, int height) {
+		return base * height / 2.0;
 	}
 
 	@Test
 	public void test_triArea() {
-		assertEquals(triArea(3, 2), 3);
-		assertEquals(triArea(7, 4), 14);
-		assertEquals(triArea(10, 10), 50);
+		assertEquals((int)triArea(3, 2), 3);
+		assertEquals((int)triArea(7, 4), 14);
+		assertEquals((int)triArea(10, 10), 50);
 	}
 
 	/**
@@ -112,7 +112,7 @@ public class Task1 {
 	 * @return ascii code of c
 	 */
 	public int ctoa(char c) {
-		return (int) c;
+		return c;
 	}
 
 	@Test

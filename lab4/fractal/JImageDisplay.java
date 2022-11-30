@@ -26,7 +26,11 @@ public class JImageDisplay extends JComponent {
 	}
 
 	public void clearImage() {
-		this.image.flush();
+		for (int x=0;x<this.image.getWidth();++x) {
+			for (int y=0;y<this.image.getHeight();++y) {
+				this.image.setRGB(x, y, 0);
+			}
+		}
 	}
 
 	public void drawPixel(int x, int y, int rgbColor) {

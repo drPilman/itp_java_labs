@@ -26,10 +26,17 @@ public class FractalExplorer {
 	}
 
 	private void createAndShowGUI() {
+		JFrame frame = new JFrame("FractalExplorer");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Container contentPane = frame.getContentPane();
+
+		contentPane.setLayout(new BorderLayout());
 		
 		class ImageMouseListener implements MouseListener {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				jImageDisplay.clearImage();
+				jImageDisplay.repaint();
 				double xCoord = FractalGenerator.getCoord(range.x, range.x + range.width, size, e.getX());
 				double yCoord = FractalGenerator.getCoord(range.y, range.y + range.height, size, e.getY());
 				fractalGenerator.recenterAndZoomRange(range, xCoord, yCoord, 0.5);
@@ -56,13 +63,6 @@ public class FractalExplorer {
 
 		jImageDisplay = new JImageDisplay(size, size);
 		jImageDisplay.addMouseListener(new ImageMouseListener());
-
-		JFrame frame = new JFrame("FractalExplorer");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Container contentPane = frame.getContentPane();
-
-		contentPane.setLayout(new BorderLayout());
-
 		contentPane.add(jImageDisplay, BorderLayout.CENTER);
 
 		JButton resetButton = new JButton("Reset");
@@ -70,6 +70,8 @@ public class FractalExplorer {
 		class ResetListener implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				jImageDisplay.clearImage();
+				jImageDisplay.repaint();
 				fractalGenerator.getInitialRange(range);
 				drawFractal();
 			}

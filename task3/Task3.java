@@ -43,7 +43,7 @@ public class Task3 {
 
 	boolean checkPerfect(int n) {
 		int s = 0;
-		for (int i = 1; i < n; ++i) {
+		for (int i = 1; i < n/2 + 1; ++i) {
 			if (n % i == 0)
 				s += i;
 		}

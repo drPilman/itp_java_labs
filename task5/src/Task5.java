@@ -265,6 +265,61 @@ public class Task5 {
 		assertEquals(correctTitle("sansa stark, lady of winterfell."), "Sansa Stark, Lady of Winterfell.");
 		assertEquals(correctTitle("TYRION LANNISTER, HAND OF THE QUEEN."), "Tyrion Lannister, Hand of the Queen.");
 	}
+	public void lineGen(int i,int max, StringBuilder res) {
+		int j;
+		if (i%2!=max%2) {
+			max-=1;
+			res.append(' ');
+		}
+		for(j=i;j<max;j+=2) {
+			res.append("  ");
+		}
+		for(j=0;j<i;++j) {
+			res.append(" o");
+		}
+		
+		for(j=i;j<max;j+=2) {
+			res.append("  ");
+		}
+		res.append(" \n");
+	}
+	
+	public String hexLattice(int n) {
+		int d=12*n-3;
+		double dd= Math.sqrt(d);
+		int dd_int = (int)dd;
+		
+		if (dd_int*dd_int==d && n%6==1) {
+			var res = new StringBuilder();
+			int k=(3+dd_int)/6;
+			int kk = 2*k-1;
+			int i=0;
+			for (i=k;i<=kk;++i)
+				lineGen(i,kk,res);
+			
+			for (i=kk-1;i>=k;--i)
+				lineGen(i,kk,res);
+			res.deleteCharAt(res.length()-1); // remove last \n
+			return res.toString();
+		}
+		return "Invalid";
+	}
+	
+	@Test
+	public void test_hexLattice() {
+		assertEquals(hexLattice(1), " o ");
+
+		assertEquals(hexLattice(7), "  o o \n o o o \n  o o ");
+
+		assertEquals(hexLattice(19), 
+				  "   o o o   \n"
+				+ "  o o o o \n"
+				+ " o o o o o \n"
+				+ "  o o o o \n"
+				+ "   o o o   ");
+
+		assertEquals(hexLattice(21), "Invalid");
+	}
 }
 
 class Point {

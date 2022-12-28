@@ -19,7 +19,7 @@ public class Task6 {
 			i = z % 2;
 			j = (i + 1) % 2;
 
-			// S{n+1,k} = k*S{n,k} + S{n,k-1}
+			//S{n+1,k} = k*S{n,k} + S{n,k-1}
 			dyn[i][0] = 0;
 			for (int k = 1; k <= z; ++k) {
 				dyn[i][k] = k * dyn[j][k] + dyn[j][k - 1];
@@ -337,8 +337,8 @@ public class Task6 {
 		assertEquals("XVI",convertToRoman(16));
 		assertEquals("IX",convertToRoman(9));
 		assertEquals("V",convertToRoman(5));
-		for (int i=1;i<100;++i)
-			System.out.println(convertToRoman(i));
+		/*for (int i=1;i<100;++i)
+			System.out.println(convertToRoman(i));*/
 	}
 				
 	Pattern elem = Pattern.compile("([\\+\\-\\*\\/]|\\d+)");
@@ -427,6 +427,7 @@ public class Task6 {
 		}
 		return true;
 	}
+	
 	public boolean palindromeDescendant(int n){
 		String s = String.valueOf(n);
 		if (s.length()==1) return false;

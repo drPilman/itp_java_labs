@@ -113,7 +113,7 @@ public class Task5 {
 
 	public int getMask(String s) {
 		return s.chars().reduce(0, (result, c) -> {
-			int i = "aeiou".indexOf(c);
+			int i = "aeiouy".indexOf(c);
 			if (i != -1)
 				result |= 1 << i;
 			return result;
